@@ -3,17 +3,20 @@
     <h1 class="subheading grey--text">Panel de control</h1>
     <v-container class="my-5">
       <v-layout row class="mb-3">
-        <v-btn
-          small
-          flat
-          color="grey"
-          v-for="(filterButton, idx) of filterButtons"
-          :key="idx"
-          @click="sortBy(filterButton.orderBy)"
-        >
-          <v-icon left small>{{filterButton.icon}}</v-icon>
-          <span class="caption text-lowercase">{{filterButton.description}}</span>
-        </v-btn>
+        <v-tooltip top v-for="(filterButton, idx) of filterButtons" :key="idx">
+          <v-btn
+            small
+            flat
+            class="ml-0 pl-0"
+            color="grey"
+            slot="activator"
+            @click="sortBy(filterButton.orderBy)"
+          >
+            <v-icon left small>{{filterButton.icon}}</v-icon>
+            <span class="caption text-lowercase">{{filterButton.description}}</span>
+          </v-btn>
+          <span>{{filterButton.description}}</span>
+        </v-tooltip>
       </v-layout>
 
       <v-card flat v-for="project in projects" :key="project.title">
