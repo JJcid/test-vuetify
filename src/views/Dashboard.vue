@@ -2,6 +2,20 @@
   <div class="dashboard">
     <h1 class="subheading grey--text">Panel de control</h1>
     <v-container class="my-5">
+      <v-layout row class="mb-3">
+        <v-btn
+          small
+          flat
+          color="grey"
+          v-for="(filterButton, idx) of filterButtons"
+          :key="idx"
+          @click="sortBy(filterButton.orderBy)"
+        >
+          <v-icon left small>{{filterButton.icon}}</v-icon>
+          <span class="caption text-lowercase">{{filterButton.description}}</span>
+        </v-btn>
+      </v-layout>
+
       <v-card flat v-for="project in projects" :key="project.title">
         <v-layout row wrap :class="['pa-3 project',project.status]">
           <v-flex xs12 md6>
@@ -47,7 +61,7 @@ export default {
         },
         {
           title: "Crear una nueva WEB",
-          person: "José Javier",
+          person: "Mario",
           date: "10/05/2019",
           status: "pending",
           content:
@@ -55,7 +69,7 @@ export default {
         },
         {
           title: "Acabar curso JS",
-          person: "José Javier",
+          person: "Juan Pedro",
           date: "05/04/2019",
           status: "complete",
           content:
@@ -63,13 +77,25 @@ export default {
         },
         {
           title: "Aprender flask",
-          person: "José Javier",
+          person: "María",
           date: "26/02/2019",
           status: "cancelled",
           content:
             "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni unde molestias accusantium, laborum, modi dolorem aliquam explicabo eos, possimus laboriosam voluptatibus minus. Fugiat, exercitationem esse reprehenderit quis rerum sapiente quae."
         }
-      ]
+      ],
+      filterButtons: {
+        byName: {
+          icon: "folder",
+          orderBy: "title",
+          description: "Por nombre de proyecto"
+        },
+        byPerson: {
+          icon: "person",
+          orderBy: "person",
+          description: "Por persona"
+        }
+      }
     };
   },
   methods: {
@@ -81,6 +107,9 @@ export default {
         cancelled: "Cancelado"
       };
       return statusMap[status];
+    },
+    sortBy(prop) {
+      this.projects.sort((a, b) => (a[prop] < b[prop] ? -1 : 1));
     }
   }
 };
