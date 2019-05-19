@@ -34,6 +34,9 @@
           </v-avatar>
           <p class="white--text text-xs-center subheading mt-1">JJ</p>
         </v-flex>
+        <v-flex>
+          <Popup/>
+        </v-flex>
       </v-layout>
       <v-list>
         <v-list-tile v-for="link in links" :key="link.text" router :to="link.route">
@@ -52,6 +55,7 @@
 </template>
 
 <script>
+import Popup from "./Popup.vue";
 export default {
   data() {
     return {
@@ -71,7 +75,8 @@ export default {
     showDrawer() {
       this.drawer = !this.drawer;
     }
-  }
+  },
+  components: { Popup }
 };
 </script>
 
