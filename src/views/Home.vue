@@ -1,17 +1,28 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <p
-      class="red white--text"
-    >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione incidunt, aut ut ex quisquam officiis eum natus officia numquam provident consectetur quam distinctio a minus omnis eligendi optio, facilis nisi.</p>
-    <p
-      class="indigo lighten-2 blue--text text--darken-4"
-    >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur, error dolorem at et possimus adipisci neque sint voluptas laudantium doloribus ullam beatae nesciunt numquam quae. Facilis iusto libero cumque repellendus?</p>
-    <h1 class="display-4">Massive Display</h1>
-    <h4 class="display-1">Smaller display</h4>
-    <p class="headline">This is a headline</p>
-    <p class="subheading font-weight-bold">subheading</p>
-    <p class="caption">Caption</p>
+    <v-btn class="indigo white--text">click me</v-btn>
+    <v-btn depressed dark color="indigo">click me</v-btn>
+    <v-btn depressed flat color="indigo">click me</v-btn>
+
+    <v-btn depressed class="indigo white--text">
+      <v-icon left>email</v-icon>
+      <span>Send</span>
+    </v-btn>
+
+    <v-btn depressed small class="indigo white--text">
+      <v-icon left small>email</v-icon>
+      <span>Send</span>
+    </v-btn>
+
+    <v-btn depressed large class="indigo white--text">
+      <span>Send</span>
+      <v-icon right large>email</v-icon>
+    </v-btn>
+
+    <v-btn fab depressed small dark color="pink">
+      <v-icon>favorite</v-icon>
+    </v-btn>
   </div>
 </template>
 
