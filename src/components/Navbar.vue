@@ -14,7 +14,18 @@
     </v-toolbar>
 
     <v-navigation-drawer app v-model="drawer" class="primary">
-      <p class="error">text</p>
+      <v-list>
+        <v-list-tile v-for="link in links" :key="link.text" router :to="link.route">
+          <v-list-tile-action>
+            <v-icon class="white--text">{{link.icon}}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title class="white--text">
+              <span>{{link.text}}</span>
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
     </v-navigation-drawer>
   </nav>
 </template>
@@ -23,7 +34,16 @@
 export default {
   data() {
     return {
-      drawer: false
+      drawer: false,
+      links: [
+        {
+          icon: "dashboard",
+          text: "Panel de control",
+          route: { name: "dashboard" }
+        },
+        { icon: "folder", text: "Mis proyectos", route: { name: "projects" } },
+        { icon: "person", text: "Equipos", route: { name: "teams" } }
+      ]
     };
   },
   methods: {
